@@ -59,48 +59,59 @@ const fetchMarkdown = async (brandId) => {
       if (depth === 1) {
         stepCounter = 1; // Reset step counter
         return `
-          <div class="mb-12">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold tracking-wide uppercase mb-4">
-              Tutorial
+          <div class="mb-10 md:mb-16 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
+              Tutorial Panduan
             </div>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">${text}</h1>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-6 leading-tight tracking-tight">${text}</h1>
           </div>
         `
       }
       if (depth === 2) {
         const html = `
-          <div class="flex items-center gap-4 mb-4 mt-12 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-dark-800 border border-dark-700 flex shrink-0 items-center justify-center text-primary-400 font-bold text-lg group-hover:bg-primary-500/10 group-hover:border-primary-500/30 transition-colors">
+          <div class="relative flex items-start gap-4 mb-3 mt-12 md:mt-16 group cursor-default">
+            <div class="relative z-10 w-12 h-12 rounded-2xl bg-gradient-to-br from-dark-800 to-dark-900 border border-white/[0.08] flex shrink-0 items-center justify-center text-primary-400 font-black text-xl shadow-lg group-hover:scale-110 group-hover:text-primary-300 group-hover:border-primary-500/30 transition-all duration-300">
               ${stepCounter}
             </div>
-            <h2 class="text-2xl font-bold text-gray-100">${text}</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-100 mt-2 tracking-tight group-hover:text-white transition-colors">${text}</h2>
           </div>
         `
         stepCounter++
         return html
       }
-      return `<h${depth} class="text-xl font-bold text-white mt-8 mb-4 md:pl-14">${text}</h${depth}>`
+      return `<h${depth} class="text-lg md:text-xl font-bold text-white mt-8 mb-4 md:pl-16">${text}</h${depth}>`
     }
 
     renderer.paragraph = function (token) {
       const text = this.parser.parseInline(token.tokens)
       if (stepCounter === 1) {
-        return `<p class="text-gray-400 text-lg md:text-xl leading-relaxed mb-12">${text}</p>`
+        return `<p class="text-gray-400 text-base md:text-xl leading-relaxed mb-12 text-center md:text-left font-light max-w-2xl">${text}</p>`
       }
-      return `<p class="text-gray-400 leading-relaxed mb-4 md:pl-14">${text}</p>`
+      return `
+        <div class="relative">
+          <div class="hidden md:block absolute left-6 top-0 bottom-[-2rem] w-px bg-gradient-to-b from-white/[0.08] to-transparent -z-10"></div>
+          <p class="text-gray-400 text-base leading-relaxed mb-5 md:pl-16 font-light">${text}</p>
+        </div>
+      `
     }
 
     renderer.blockquote = function (token) {
       const text = this.parser.parse(token.tokens)
       return `
-        <div class="md:ml-14 p-5 rounded-2xl bg-dark-800 border border-dark-700 shadow-inner mb-6">
-          <div class="flex items-center gap-2 mb-3 border-b border-dark-700 pb-3">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-             </svg>
-             <span class="text-sm font-medium text-gray-400">Tips / Info</span>
+        <div class="relative mb-8 mt-2">
+          <div class="hidden md:block absolute left-6 top-0 bottom-[-2rem] w-px bg-gradient-to-b from-white/[0.08] to-transparent -z-10"></div>
+          <div class="md:ml-16 p-6 rounded-3xl bg-white/[0.02] border border-white/[0.05] shadow-2xl backdrop-blur-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary-500 to-purple-600"></div>
+            <div class="flex items-center gap-3 mb-3">
+               <div class="w-8 h-8 rounded-full bg-primary-500/10 flex items-center justify-center text-primary-400">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                 </svg>
+               </div>
+               <span class="text-sm font-bold text-gray-300 tracking-wide uppercase">Tips / Info</span>
+            </div>
+            <div class="text-sm md:text-base text-gray-400 leading-relaxed font-light">${text}</div>
           </div>
-          <div class="text-sm text-gray-300 leading-relaxed">${text}</div>
         </div>
       `
     }
@@ -109,15 +120,20 @@ const fetchMarkdown = async (brandId) => {
       const text = token.text
       const lang = token.lang
       return `
-        <div class="md:ml-14 bg-[#1e1e28] rounded-xl overflow-hidden border border-dark-700 mb-6 mt-4">
-          <div class="bg-[#181820] px-4 py-2 border-b border-dark-700 flex items-center gap-2">
-             <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-             <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-             <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
-             <span class="ml-2 text-xs text-gray-500 font-mono">${lang || 'config'}</span>
-          </div>
-          <div class="p-4 text-sm font-mono text-primary-300 overflow-x-auto">
-            <pre><code>${text}</code></pre>
+        <div class="relative mb-8 mt-4">
+          <div class="hidden md:block absolute left-6 top-0 bottom-[-2rem] w-px bg-gradient-to-b from-white/[0.08] to-transparent -z-10"></div>
+          <div class="md:ml-16 bg-[#0f0f13]/80 rounded-2xl overflow-hidden border border-white/[0.05] shadow-2xl backdrop-blur-md">
+            <div class="bg-white/[0.02] px-4 py-3 border-b border-white/[0.05] flex items-center gap-2">
+               <div class="flex gap-1.5">
+                 <div class="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_5px_rgba(239,68,68,0.5)]"></div>
+                 <div class="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_5px_rgba(234,179,8,0.5)]"></div>
+                 <div class="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_5px_rgba(34,197,94,0.5)]"></div>
+               </div>
+               <span class="ml-auto text-xs text-gray-500 font-mono tracking-wider">${lang || 'config'}</span>
+            </div>
+            <div class="p-5 text-sm font-mono text-primary-200 overflow-x-auto leading-relaxed">
+              <pre><code>${text}</code></pre>
+            </div>
           </div>
         </div>
       `
@@ -132,12 +148,17 @@ const fetchMarkdown = async (brandId) => {
       for (let i = 0; i < token.items.length; i++) {
         body += this.listitem(token.items[i])
       }
-      return `<${tag} class="${classes} md:pl-20 pl-8 pr-4 text-gray-400 space-y-2 mb-6">${body}</${tag}>`
+      return `
+        <div class="relative mb-8">
+          <div class="hidden md:block absolute left-6 top-0 bottom-[-2rem] w-px bg-gradient-to-b from-white/[0.08] to-transparent -z-10"></div>
+          <${tag} class="${classes} md:ml-16 pl-6 pr-4 text-gray-400 space-y-3 font-light">${body}</${tag}>
+        </div>
+      `
     }
     
     renderer.listitem = function (token) {
       const text = this.parser.parse(token.tokens)
-      return `<li class="pl-2">${text}</li>`
+      return `<li class="pl-2 leading-relaxed text-base">${text}</li>`
     }
 
     // Gunakan renderer khusus

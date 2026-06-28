@@ -18,13 +18,13 @@
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <router-link to="/tutorial" class="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white rounded-xl font-semibold shadow-lg shadow-primary-500/25 transition-all active:scale-95 flex items-center gap-2">
-          Mulai Belajar
+          Baca Dokumentasi
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </router-link>
         <a href="#features" class="px-8 py-3 bg-dark-800 hover:bg-dark-700 text-gray-300 border border-dark-700 rounded-xl font-semibold transition-all">
-          Pelajari Lebih Lanjut
+          Lihat Daftar Router
         </a>
       </div>
     </div>
