@@ -1,23 +1,16 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
 const cursorGlow = ref(null)
 
-const handleMouseMove = (e) => {
-  if (cursorGlow.value) {
-    // Centering the glow on the mouse pointer
-    cursorGlow.value.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`
-  }
-}
-
 onMounted(() => {
-  window.addEventListener('mousemove', handleMouseMove)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('mousemove', handleMouseMove)
+  window.addEventListener('mousemove', (e) => {
+    if (cursorGlow.value) {
+      cursorGlow.value.style.transform = `translate(${e.clientX - 250}px, ${e.clientY - 250}px)`
+    }
+  })
 })
 </script>
 
@@ -35,10 +28,10 @@ onUnmounted(() => {
     ></div>
 
     <!-- Purple Emboss / Glow Backgrounds -->
-    <div class="absolute top-[10%] left-[80%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-primary-600/10 rounded-[100%] blur-[120px] pointer-events-none -rotate-45"></div>
-    <div class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-[#4c1d95]/20 rounded-[100%] blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-[80vw] max-w-[800px] h-[80vh] pointer-events-none mix-blend-screen" style="background: radial-gradient(closest-side circle at 80% 20%, rgba(139,92,246,0.08) 0%, transparent 100%);"></div>
+    <div class="absolute bottom-0 left-0 w-[100vw] h-[100vh] pointer-events-none mix-blend-screen" style="background: radial-gradient(closest-side circle at 20% 80%, rgba(76,29,149,0.15) 0%, transparent 100%);"></div>
 
-    <Header class="relative z-10" />
+    <Header />
     <div class="flex-grow relative z-10">
       <router-view></router-view>
     </div>
@@ -47,5 +40,26 @@ onUnmounted(() => {
 </template>
 
 <style>
+@keyframes shoot-right {
+  0% { transform: translateX(-100vw); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+@keyframes shoot-left {
+  0% { transform: translateX(100vw); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(-100vw); opacity: 0; }
+}
+@keyframes shoot-down {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+@keyframes shoot-up {
+  0% { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
 /* Any global specific overrides can go here, but mostly handled by tailwind */
 </style>
