@@ -1,5 +1,5 @@
 <template>
-  <main class="max-w-4xl mx-auto px-6 py-12">
+  <main class="max-w-4xl mx-auto px-6 pb-12 pt-28 md:pt-36">
     <div class="mb-12 text-center">
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
         Pilih Merek Router Anda
