@@ -47,6 +47,7 @@
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { marked } from 'marked'
+import { supabase, hasSupabaseConfig } from '../lib/supabaseClient'
 
 const route = useRoute()
 const htmlContent = ref('')
@@ -63,19 +64,36 @@ const openRouter = () => {
   window.open(ip, '_blank', 'noopener,noreferrer')
 }
 
-
 const fetchMarkdown = async (brandId) => {
   loading.value = true
   error.value = null
   try {
-    const response = await fetch(`/content/${brandId}.md`)
-    
-    if (!response.ok) {
-      throw new Error(`Panduan untuk router ${brandId} belum tersedia.`)
+    let rawMarkdown = ''
+
+    if (hasSupabaseConfig) {
+      try {
+        const { data, error: sbError } = await supabase
+          .from('tutorials')
+          .select('content')
+          .eq('slug', brandId)
+          .single()
+        
+        if (sbError) throw sbError
+        if (data && data.content) {
+          rawMarkdown = data.content
+        }
+      } catch (dbErr) {
+        console.warn("Gagal mengambil dari Supabase, mencoba file lokal...", dbErr)
+      }
     }
-    
-    const markdownText = await response.text()
-    
+
+    // Fallback if Supabase is not configured or fails
+    if (!rawMarkdown) {
+      const res = await fetch(`/content/${brandId}.md`)
+      if (!res.ok) throw new Error('Panduan tidak ditemukan')
+      rawMarkdown = await res.text()
+    }
+
     // Konfigurasi Custom Renderer untuk Marked v18
     const renderer = new marked.Renderer()
     let stepCounter = 1
@@ -187,7 +205,7 @@ const fetchMarkdown = async (brandId) => {
     }
 
     // Gunakan renderer khusus
-    htmlContent.value = marked(markdownText, { renderer })
+    htmlContent.value = marked(rawMarkdown, { renderer })
     
   } catch (err) {
     error.value = err.message
