@@ -53,8 +53,8 @@ const toggleMobileMenu = () => {
 
       <!-- Mobile Dropdown Menu -->
       <div v-show="isMobileMenuOpen" class="md:hidden flex flex-col w-full px-4 pt-4 pb-2 border-t border-white/[0.05] mt-2 gap-2">
-        <router-link to="/tutorial" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Panduan</router-link>
-        <a href="#" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Kompatibilitas</a>
+        <router-link to="/tutorial" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Panduan</router-link>
+        <a href="#" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Kompatibilitas</a>
       </div>
 
     </header>
