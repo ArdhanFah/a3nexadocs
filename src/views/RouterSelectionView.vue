@@ -58,6 +58,18 @@
         <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors tracking-tight">Tenda</h3>
         <p class="text-gray-400 text-sm leading-relaxed">Alternatif populer dengan jangkauan luas untuk memperkuat sinyal WiFi rumahan Anda.</p>
       </router-link>
+
+      <!-- Fiberhome -->
+      <router-link to="/tutorial/fiberhome" class="group relative p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-primary-500/30 transition-all duration-300 backdrop-blur-md overflow-hidden hover:-translate-y-2 md:translate-y-0 lg:translate-y-4">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-primary-600/10 text-primary-300 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(139,92,246,0.1)] group-hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors tracking-tight">Fiberhome</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Router handal yang banyak disediakan oleh ISP fiber optic terbaru dengan performa stabil.</p>
+      </router-link>
       
     </div>
   </main>
