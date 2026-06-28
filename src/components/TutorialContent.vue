@@ -1,14 +1,16 @@
 <template>
-  <main class="max-w-3xl mx-auto px-6 py-12">
-    <!-- Tombol Kembali -->
-    <div class="mb-8">
-      <router-link to="/tutorial" class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors text-sm font-medium">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <main class="max-w-3xl mx-auto px-6 pb-12 pt-28 md:pt-36">
+    <!-- Premium Breadcrumb Navigation -->
+    <nav class="mb-10 md:mb-12 relative z-10 flex items-center gap-3 text-sm font-medium">
+      <router-link to="/tutorial" class="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
-        Kembali ke Pilihan Router
+        Pilih Router
       </router-link>
-    </div>
+      <span class="text-gray-600">/</span>
+      <span class="text-primary-400 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 shadow-[0_0_15px_rgba(139,92,246,0.1)]">{{ currentBrandName }}</span>
+    </nav>
 
     <!-- Status Loading / Error -->
     <div v-if="loading" class="flex justify-center py-20">
@@ -21,7 +23,22 @@
     </div>
 
     <!-- Konten Kustom (Rendered from MD) -->
-    <div v-else class="custom-md-container" v-html="htmlContent">
+    <div v-else>
+      <div class="custom-md-container" v-html="htmlContent"></div>
+      
+      <!-- Call to Action Button at the bottom -->
+      <div class="mt-20 pt-12 border-t border-white/[0.08] flex flex-col items-center text-center">
+        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">Sudah Paham Langkahnya?</h3>
+        <p class="text-gray-400 mb-8 max-w-lg leading-relaxed">Jangan cuma dibaca, praktikkan sekarang! Sistem akan otomatis mengarahkan Anda ke IP bawaan router ini.</p>
+        
+        <button @click="openRouter" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-purple-500 text-white font-bold text-base shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+          <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          <span class="relative z-10">Akses Halaman Router Asli</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </button>
+      </div>
     </div>
   </main>
 </template>
@@ -35,6 +52,17 @@ const route = useRoute()
 const htmlContent = ref('')
 const loading = ref(true)
 const error = ref(null)
+const currentBrandName = ref('')
+
+const openRouter = () => {
+  let ip = 'http://192.168.1.1'
+  const name = currentBrandName.value.toLowerCase()
+  if (name.includes('tp-link')) {
+    ip = 'http://192.168.0.1'
+  }
+  window.open(ip, '_blank', 'noopener,noreferrer')
+}
+
 
 const fetchMarkdown = async (brandId) => {
   loading.value = true
@@ -60,9 +88,6 @@ const fetchMarkdown = async (brandId) => {
         stepCounter = 1; // Reset step counter
         return `
           <div class="mb-10 md:mb-16 text-center md:text-left">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
-              Tutorial Panduan
-            </div>
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-6 leading-tight tracking-tight">${text}</h1>
           </div>
         `
@@ -172,11 +197,15 @@ const fetchMarkdown = async (brandId) => {
 }
 
 onMounted(() => {
+  if (route.params.brand) {
+    currentBrandName.value = route.params.brand.toUpperCase()
+  }
   fetchMarkdown(route.params.brand)
 })
 
 watch(() => route.params.brand, (newBrand) => {
   if (newBrand) {
+    currentBrandName.value = newBrand.toUpperCase()
     fetchMarkdown(newBrand)
   }
 })
