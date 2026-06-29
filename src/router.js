@@ -20,6 +20,16 @@ const router = createRouter({
       path: '/tutorial/:brand',
       name: 'tutorial',
       component: TutorialContent
+    },
+    {
+      path: '/speedtest',
+      name: 'speedtest',
+      component: () => import('./views/SpeedtestView.vue')
+    },
+    {
+      path: '/speedtest-embed',
+      name: 'speedtest-embed',
+      component: () => import('./views/SpeedtestEmbedView.vue')
     }
   ]
 })
