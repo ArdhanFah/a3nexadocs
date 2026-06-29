@@ -25,6 +25,26 @@ const router = createRouter({
       path: '/speedtest',
       name: 'speedtest',
       component: () => import('./views/SpeedtestView.vue')
+    },
+    {
+      path: '/tools',
+      name: 'tools-selection',
+      component: () => import('./views/ToolsSelectionView.vue')
+    },
+    {
+      path: '/tools/my-ip',
+      name: 'tool-my-ip',
+      component: () => import('./views/tools/WhatIsMyIpView.vue')
+    },
+    {
+      path: '/tools/ip-calculator',
+      name: 'tool-ip-calculator',
+      component: () => import('./views/tools/IpCalculatorView.vue')
+    },
+    {
+      path: '/tools/dns-lookup',
+      name: 'tool-dns-lookup',
+      component: () => import('./views/tools/DnsLookupView.vue')
     }
   ]
 })

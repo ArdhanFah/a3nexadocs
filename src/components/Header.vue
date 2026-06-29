@@ -27,8 +27,9 @@ const toggleMobileMenu = () => {
 
         <!-- Navigation Links (Absolute Centered for perfect precision) -->
         <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 px-4 py-1.5 bg-black/30 rounded-full border border-white/[0.03] shadow-inner shadow-black/50 z-10">
-          <router-link to="/tutorial" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all">Panduan</router-link>
-          <router-link to="/speedtest" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all">Speedtest</router-link>
+          <router-link to="/tutorial" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Panduan</router-link>
+          <router-link to="/speedtest" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Speedtest</router-link>
+          <router-link to="/tools" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Tools</router-link>
         </nav>
 
         <!-- Action Button / Mobile Hamburger -->
@@ -53,8 +54,9 @@ const toggleMobileMenu = () => {
 
       <!-- Mobile Dropdown Menu -->
       <div v-show="isMobileMenuOpen" class="md:hidden flex flex-col w-full px-4 pt-4 pb-2 border-t border-white/[0.05] mt-2 gap-2">
-        <router-link to="/tutorial" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Panduan</router-link>
-        <router-link to="/speedtest" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Speedtest</router-link>
+        <router-link to="/tutorial" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Panduan</router-link>
+        <router-link to="/speedtest" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Speedtest</router-link>
+        <router-link to="/tools" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Tools</router-link>
       </div>
 
     </header>
