@@ -25,6 +25,22 @@ const tools = ref([
     icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
     route: '/tools/dns-lookup',
     color: 'from-emerald-500 to-teal-400'
+  },
+  {
+    id: 'port-checker',
+    name: 'Port Checker',
+    description: 'Cek apakah port tertentu terbuka pada IP publik / domain Anda.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    route: '/tools/port-checker',
+    color: 'from-amber-500 to-orange-500'
+  },
+  {
+    id: 'whois-lookup',
+    name: 'WHOIS Lookup',
+    description: 'Cari informasi registrasi domain, kepemilikan, dan tanggal kedaluwarsa.',
+    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+    route: '/tools/whois-lookup',
+    color: 'from-violet-500 to-purple-500'
   }
 ])
 </script>

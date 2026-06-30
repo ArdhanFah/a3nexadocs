@@ -45,6 +45,16 @@ const router = createRouter({
       path: '/tools/dns-lookup',
       name: 'tool-dns-lookup',
       component: () => import('./views/tools/DnsLookupView.vue')
+    },
+    {
+      path: '/tools/port-checker',
+      name: 'tool-port-checker',
+      component: () => import('./views/tools/PortCheckerView.vue')
+    },
+    {
+      path: '/tools/whois-lookup',
+      name: 'tool-whois-lookup',
+      component: () => import('./views/tools/WhoisLookupView.vue')
     }
   ]
 })
