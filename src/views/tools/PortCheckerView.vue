@@ -97,7 +97,7 @@ const checkPort = async () => {
       <div class="relative p-6 md:p-12 z-10 flex flex-col min-h-[400px]" style="background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px); background-size: 32px 32px;">
 
         <!-- Input Section -->
-        <form @submit.prevent="checkPort" class="max-w-2xl mx-auto mb-12 relative z-10 w-full">
+        <form @submit.prevent="checkPort" class="mb-12 relative z-10 w-full">
           <div class="flex flex-col md:flex-row gap-4 mb-4">
             <div class="flex-grow">
               <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Domain atau Alamat IP</label>
@@ -162,7 +162,7 @@ const checkPort = async () => {
         </form>
 
         <!-- Results Section -->
-        <div class="max-w-2xl mx-auto relative z-10 w-full">
+        <div class="relative z-10 w-full">
           <div v-if="error" class="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center text-red-400">
             <p>{{ error }}</p>
           </div>

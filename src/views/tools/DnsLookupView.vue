@@ -92,7 +92,7 @@ const lookupDns = async () => {
       <div class="relative p-6 md:p-12 z-10 flex flex-col min-h-[400px]" style="background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px); background-size: 32px 32px;">
 
       <!-- Input Section -->
-      <form @submit.prevent="lookupDns" class="max-w-2xl mx-auto mb-12 relative z-10 w-full">
+      <form @submit.prevent="lookupDns" class="mb-12 relative z-10 w-full">
         <div class="flex flex-col md:flex-row gap-4 mb-3">
           <div class="flex-grow">
             <input 
@@ -135,7 +135,7 @@ const lookupDns = async () => {
       </form>
 
       <!-- Results Section -->
-      <div class="max-w-3xl mx-auto relative z-10">
+      <div class="w-full relative z-10">
         
         <div v-if="error" class="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center text-red-400">
           <p>{{ error }}</p>
@@ -145,27 +145,49 @@ const lookupDns = async () => {
           <p class="text-gray-400">Tidak ada record tipe <strong class="text-emerald-400">{{ recordType }}</strong> ditemukan untuk domain tersebut.</p>
         </div>
 
-        <div v-else-if="results && results.length > 0" class="overflow-hidden rounded-2xl border border-white/5 bg-black/40">
-          <table class="w-full text-left text-sm text-gray-300">
-            <thead class="bg-white/5 text-gray-400 uppercase font-semibold text-xs tracking-wider">
-              <tr>
-                <th class="px-6 py-4">Domain</th>
-                <th class="px-6 py-4">Type</th>
-                <th class="px-6 py-4">TTL</th>
-                <th class="px-6 py-4">Data / Value</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-white/5">
-              <tr v-for="(record, idx) in results" :key="idx" class="hover:bg-white/5 transition-colors">
-                <td class="px-6 py-4 truncate max-w-[150px] text-white">{{ record.name }}</td>
-                <td class="px-6 py-4">
-                  <span class="px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-md text-xs font-bold">{{ record.type }}</span>
-                </td>
-                <td class="px-6 py-4 text-gray-500">{{ record.ttl }}s</td>
-                <td class="px-6 py-4 font-mono text-gray-300 break-all">{{ record.data }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Results Container -->
+        <div v-else-if="results && results.length > 0">
+          <!-- Desktop Table View -->
+          <div class="hidden md:block overflow-x-auto rounded-2xl border border-white/5 bg-black/40">
+            <table class="w-full text-left text-sm text-gray-300">
+              <thead class="bg-white/5 text-gray-400 uppercase font-semibold text-xs tracking-wider">
+                <tr>
+                  <th class="px-6 py-4">Domain</th>
+                  <th class="px-6 py-4">Type</th>
+                  <th class="px-6 py-4">TTL</th>
+                  <th class="px-6 py-4">Data / Value</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5">
+                <tr v-for="(record, idx) in results" :key="idx" class="hover:bg-white/5 transition-colors">
+                  <td class="px-6 py-4 truncate max-w-[150px] text-white">{{ record.name }}</td>
+                  <td class="px-6 py-4">
+                    <span class="px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-md text-xs font-bold">{{ record.type }}</span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-500">{{ record.ttl }}s</td>
+                  <td class="px-6 py-4 font-mono text-gray-300 break-all">{{ record.data }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile Card List View -->
+          <div class="block md:hidden space-y-4">
+            <div 
+              v-for="(record, idx) in results" 
+              :key="idx" 
+              class="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-all"
+            >
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-white font-semibold truncate max-w-[180px]">{{ record.name }}</span>
+                <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 rounded-md text-xs font-bold">{{ record.type }}</span>
+              </div>
+              <div class="text-xs text-gray-500 mb-2">TTL: {{ record.ttl }}s</div>
+              <div class="font-mono text-xs text-gray-300 bg-black/30 p-3 rounded-xl border border-white/5 break-all">
+                {{ record.data }}
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
