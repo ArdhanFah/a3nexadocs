@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import AdBanner from './components/AdBanner.vue'
 
 const cursorGlow = ref(null)
 
@@ -35,6 +36,7 @@ onMounted(() => {
     <div class="flex-grow relative z-10">
       <router-view></router-view>
     </div>
+    <AdBanner />
     <Footer class="relative z-10" />
   </div>
 </template>
