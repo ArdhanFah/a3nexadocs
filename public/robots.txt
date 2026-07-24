@@ -1,0 +1,6 @@
+# robots.txt for docs.ardhanfah
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
