@@ -30,6 +30,7 @@ const toggleMobileMenu = () => {
           <router-link to="/tutorial" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Panduan</router-link>
           <router-link to="/speedtest" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Speedtest</router-link>
           <router-link to="/tools" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Tools</router-link>
+          <router-link to="/blog" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all" active-class="text-white bg-white/10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Blog</router-link>
         </nav>
 
         <!-- Action Button / Mobile Hamburger -->
@@ -57,6 +58,7 @@ const toggleMobileMenu = () => {
         <router-link to="/tutorial" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Panduan</router-link>
         <router-link to="/speedtest" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Speedtest</router-link>
         <router-link to="/tools" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Tools</router-link>
+        <router-link to="/blog" @click="isMobileMenuOpen = false" class="px-4 py-3 rounded-xl font-semibold text-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors" active-class="text-white bg-white/10">Blog</router-link>
       </div>
 
     </header>

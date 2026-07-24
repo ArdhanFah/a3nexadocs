@@ -105,6 +105,26 @@ const router = createRouter({
         description: 'Cari informasi kepemilikan domain, data pendaftar (registrar), tanggal kadaluarsa, name server (NS) melalui database WHOIS.',
         keywords: 'whois lookup, cek pemilik domain, expiry date domain, registrar info'
       }
+    },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: () => import('./views/BlogView.vue'),
+      meta: { 
+        title: 'Blog & Tips WiFi',
+        description: 'Dapatkan informasi, tips, trik, dan panduan seputar jaringan komputer dan optimasi Wi-Fi rumah.',
+        keywords: 'blog wifi, tips internet cepat, optimasi router, wifi rumah, tutorial jaringan'
+      }
+    },
+    {
+      path: '/blog/:slug',
+      name: 'blog-post',
+      component: () => import('./views/BlogPostView.vue'),
+      meta: { 
+        title: 'Artikel Jaringan',
+        description: 'Baca artikel edukatif seputar jaringan komputer lengkap di docs.ardhanfah.',
+        keywords: 'artikel wifi, tips internet'
+      }
     }
   ]
 })
@@ -130,6 +150,24 @@ router.beforeEach((to, from, next) => {
     const dynamicTitle = `Panduan Setting Router ${brandName}`
     const dynamicDesc = `Tutorial langkah demi langkah cara setting, login admin, konfigurasi PPPoE, ganti sandi WiFi router ${brandName} secara lengkap.`
     const dynamicKeywords = `setting ${brandRaw}, cara login ${brandRaw}, config ${brandRaw}, ganti password wifi ${brandRaw}, ip router ${brandRaw}`
+
+    document.title = `${dynamicTitle} | ${baseTitle}`
+
+    if (descriptionEl) descriptionEl.setAttribute('content', dynamicDesc)
+    if (ogDescEl) ogDescEl.setAttribute('content', dynamicDesc)
+    if (twitterDescEl) twitterDescEl.setAttribute('content', dynamicDesc)
+
+    if (ogTitleEl) ogTitleEl.setAttribute('content', `${dynamicTitle} | ${baseTitle}`)
+    if (twitterTitleEl) twitterTitleEl.setAttribute('content', `${dynamicTitle} | ${baseTitle}`)
+
+    if (keywordsEl) keywordsEl.setAttribute('content', dynamicKeywords)
+  } else if (to.name === 'blog-post' && to.params.slug) {
+    // Check dynamic route for blog post
+    const slugRaw = to.params.slug
+    const postTitle = slugRaw.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    const dynamicTitle = postTitle
+    const dynamicDesc = `Baca artikel lengkap tentang ${postTitle} di docs.ardhanfah. Tips, trik, dan panduan konfigurasi jaringan.`
+    const dynamicKeywords = `${slugRaw.replace(/-/g, ' ')}, tips wifi, info jaringan, docs.ardhanfah`
 
     document.title = `${dynamicTitle} | ${baseTitle}`
 

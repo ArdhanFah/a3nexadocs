@@ -5,6 +5,7 @@
         <span class="text-xs text-gray-500 font-medium">© 2026 ArdhanFah. All rights reserved.</span>
       </div>
       <div class="flex items-center gap-6">
+        <router-link to="/blog" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">Blog</router-link>
         <a href="#" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">GitHub</a>
         <a href="#" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">Privacy</a>
         <a href="#" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">Terms</a>
