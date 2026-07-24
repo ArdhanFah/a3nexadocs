@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --dot-color: rgba(139, 92, 246, 0.15);
+}
+.dark {
+  --dot-color: rgba(167, 139, 250, 0.2);
+}
+
 @layer base {
   body {
-    @apply bg-dark-900 text-gray-200 antialiased selection:bg-primary-500/30 selection:text-white;
+    @apply bg-gray-50 text-gray-800 dark:bg-dark-900 dark:text-gray-200 antialiased selection:bg-primary-500/30 selection:text-white transition-colors duration-300;
   }
 }

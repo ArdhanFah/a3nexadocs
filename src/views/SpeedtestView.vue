@@ -1,37 +1,37 @@
 <template>
   <main class="max-w-5xl mx-auto px-6 pb-12 pt-28 md:pt-36 font-sans relative z-10">
     <div class="mb-12 text-center">
-      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Cek Performa <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-primary-500">Real-Time</span><br/>Internet Anda
+      <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
+        Cek Performa <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-primary-600 dark:from-cyan-400 dark:to-primary-500 animate-gradient-x">Real-Time</span><br/>Internet Anda
       </h1>
-      <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-        Rasakan performa sesungguhnya dari jaringan fiber GMDP. Ukur download, upload, latensi, dan jitter secara akurat menggunakan server GMDP.
+      <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Ukur download, upload, latensi, dan jitter secara akurat menggunakan server uji kecepatan performa tinggi.
       </p>
     </div>
 
     <!-- Diagnostic Window -->
-    <div class="relative bg-[#0f0f13]/80 border border-white/[0.08] backdrop-blur-xl rounded-[1.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden mt-10 md:mt-12 max-w-4xl mx-auto">
+    <div class="relative bg-white/80 dark:bg-[#0f0f13]/80 border border-black/[0.06] dark:border-white/[0.08] backdrop-blur-xl rounded-[1.5rem] shadow-[0_15px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden mt-10 md:mt-12 max-w-4xl mx-auto">
       
       <!-- Top Window Bar -->
-      <div class="flex items-center px-6 py-3 border-b border-white/[0.05] bg-white/[0.02]">
+      <div class="flex items-center px-6 py-3 border-b border-black/[0.05] dark:border-white/[0.05] bg-black/[0.01] dark:bg-white/[0.02]">
         <div class="flex gap-2">
           <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
           <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
           <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
         </div>
-        <span class="ml-6 text-[10px] font-bold text-gray-500 tracking-[0.15em] uppercase">Alat Diagnostik Jaringan</span>
+        <span class="ml-6 text-[10px] font-bold text-gray-400 dark:text-gray-500 tracking-[0.15em] uppercase">Alat Diagnostik Jaringan</span>
       </div>
 
       <!-- Content Area with Dotted Pattern -->
-      <div class="relative p-8 md:p-12 z-10 flex flex-col items-center" style="background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px); background-size: 32px 32px;">
+      <div class="relative p-8 md:p-12 z-10 flex flex-col items-center" style="background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px); background-size: 32px 32px;">
         
         <!-- Big GO / Status Button -->
         <div class="flex flex-col items-center justify-center mb-10 mt-6 h-48">
-          <button v-if="!isTesting" @click="startTest" class="relative group w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center transition-all duration-300 z-20 outline-none">
+          <button v-if="!isTesting" @click="startTest" class="relative group w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center transition-all duration-300 z-20 outline-none cursor-pointer">
             <!-- Glow background -->
             <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full blur-2xl opacity-40 group-hover:opacity-70 transition-all duration-500"></div>
             <!-- Main button body -->
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-full shadow-[0_0_30px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] transition-all duration-300"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 to-primary-500 rounded-full shadow-[0_0_30px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] transition-all duration-300"></div>
             <!-- Text -->
             <span class="relative z-10 text-white font-black text-3xl md:text-4xl tracking-widest drop-shadow-md">
               GO
@@ -41,8 +41,8 @@
           <!-- Testing Animation -->
           <div v-else class="flex flex-col items-center justify-center">
             <div class="relative w-32 h-32 md:w-36 md:h-36 rounded-full flex items-center justify-center">
-              <div class="absolute inset-0 rounded-full border-4 border-white/[0.05]"></div>
-              <div class="absolute inset-0 rounded-full border-4 border-cyan-400 border-t-transparent animate-spin"></div>
+              <div class="absolute inset-0 rounded-full border-4 border-black/[0.04] dark:border-white/[0.05]"></div>
+              <div class="absolute inset-0 rounded-full border-4 border-cyan-500 dark:border-cyan-400 border-t-transparent animate-spin"></div>
               <div class="absolute inset-2 bg-gradient-to-br from-cyan-500 to-primary-500 rounded-full opacity-80 flex items-center justify-center shadow-lg cursor-pointer hover:opacity-100 transition-opacity" @click="stopTest">
                  <!-- Stop Icon -->
                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,43 +50,43 @@
                  </svg>
               </div>
             </div>
-            <span class="mt-6 text-gray-400 font-medium text-sm tracking-wide">
+            <span class="mt-6 text-gray-500 dark:text-gray-400 font-medium text-sm tracking-wide">
               {{ testPhase === 'ping' ? 'Mengukur Ping...' : testPhase === 'download' ? 'Mengukur Download...' : 'Mengukur Upload...' }}
             </span>
           </div>
           
-          <span v-if="!isTesting" class="mt-6 text-gray-500 font-medium tracking-wide text-sm">Klik untuk memulai tes</span>
+          <span v-if="!isTesting" class="mt-6 text-gray-450 dark:text-gray-550 font-medium tracking-wide text-sm">Klik untuk memulai tes</span>
         </div>
 
         <!-- 4 Column Stats -->
         <div class="grid grid-cols-4 gap-2 md:gap-8 mb-10 text-center w-full max-w-3xl">
           <div>
-            <div class="text-[10px] md:text-[11px] font-bold text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Ping</div>
-            <div class="text-xl md:text-3xl font-black text-white">{{ ping !== null ? ping : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-500">ms</span></div>
+            <div class="text-[10px] md:text-[11px] font-bold text-gray-400 dark:text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Ping</div>
+            <div class="text-xl md:text-3xl font-black text-gray-900 dark:text-white">{{ ping !== null ? ping : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-400 dark:text-gray-500">ms</span></div>
           </div>
           <div>
-            <div class="text-[10px] md:text-[11px] font-bold text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Download</div>
-            <div class="text-xl md:text-3xl font-black text-white">{{ download !== null ? download : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-500">Mbps</span></div>
+            <div class="text-[10px] md:text-[11px] font-bold text-gray-400 dark:text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Download</div>
+            <div class="text-xl md:text-3xl font-black text-gray-900 dark:text-white">{{ download !== null ? download : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-400 dark:text-gray-500">Mbps</span></div>
           </div>
           <div>
-            <div class="text-[10px] md:text-[11px] font-bold text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Upload</div>
-            <div class="text-xl md:text-3xl font-black text-white">{{ upload !== null ? upload : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-500">Mbps</span></div>
+            <div class="text-[10px] md:text-[11px] font-bold text-gray-400 dark:text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Upload</div>
+            <div class="text-xl md:text-3xl font-black text-gray-900 dark:text-white">{{ upload !== null ? upload : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-400 dark:text-gray-500">Mbps</span></div>
           </div>
           <div>
-            <div class="text-[10px] md:text-[11px] font-bold text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Jitter</div>
-            <div class="text-xl md:text-3xl font-black text-white">{{ jitter !== null ? jitter : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-500">ms</span></div>
+            <div class="text-[10px] md:text-[11px] font-bold text-gray-400 dark:text-gray-500 mb-1 md:mb-2 uppercase tracking-widest">Jitter</div>
+            <div class="text-xl md:text-3xl font-black text-gray-900 dark:text-white">{{ jitter !== null ? jitter : '--' }} <span class="text-[10px] md:text-xs font-bold text-gray-400 dark:text-gray-500">ms</span></div>
           </div>
         </div>
 
         <!-- Charts Row -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 w-full max-w-3xl">
           <!-- Download Chart Card -->
-          <div class="bg-white/[0.02] border border-white/[0.05] rounded-xl p-5 flex flex-col h-40 relative overflow-hidden backdrop-blur-sm shadow-inner shadow-black/20">
+          <div class="bg-black/[0.01] dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.05] rounded-xl p-5 flex flex-col h-40 relative overflow-hidden backdrop-blur-sm shadow-inner shadow-black/5 dark:shadow-black/20">
             <div class="flex justify-between items-center mb-2 relative z-10">
-              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Grafik Download</span>
-              <span class="text-xs font-bold text-white">{{ download !== null ? download : '0.0' }} Mbps</span>
+              <span class="text-[10px] font-bold text-gray-455 dark:text-gray-555 uppercase tracking-widest">Grafik Download</span>
+              <span class="text-xs font-bold text-gray-900 dark:text-white">{{ download !== null ? download : '0.0' }} Mbps</span>
             </div>
-            <div class="flex-grow border-b border-dashed border-white/[0.1] mt-auto relative z-10 flex items-end">
+            <div class="flex-grow border-b border-dashed border-black/[0.1] dark:border-white/[0.1] mt-auto relative z-10 flex items-end">
               <div v-if="download !== null || testPhase === 'download' || testPhase === 'upload'" class="w-full h-full relative overflow-hidden flex items-end">
                 <svg class="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" style="overflow: visible;">
                   <defs>
@@ -103,12 +103,12 @@
           </div>
 
           <!-- Upload Chart Card -->
-          <div class="bg-white/[0.02] border border-white/[0.05] rounded-xl p-5 flex flex-col h-40 relative overflow-hidden backdrop-blur-sm shadow-inner shadow-black/20">
+          <div class="bg-black/[0.01] dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.05] rounded-xl p-5 flex flex-col h-40 relative overflow-hidden backdrop-blur-sm shadow-inner shadow-black/5 dark:shadow-black/20">
             <div class="flex justify-between items-center mb-2 relative z-10">
-              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Grafik Upload</span>
-              <span class="text-xs font-bold text-white">{{ upload !== null ? upload : '0.0' }} Mbps</span>
+              <span class="text-[10px] font-bold text-gray-455 dark:text-gray-555 uppercase tracking-widest">Grafik Upload</span>
+              <span class="text-xs font-bold text-gray-900 dark:text-white">{{ upload !== null ? upload : '0.0' }} Mbps</span>
             </div>
-            <div class="flex-grow border-b border-dashed border-white/[0.1] mt-auto relative z-10 flex items-end">
+            <div class="flex-grow border-b border-dashed border-black/[0.1] dark:border-white/[0.1] mt-auto relative z-10 flex items-end">
               <div v-if="upload !== null || testPhase === 'upload'" class="w-full h-full relative overflow-hidden flex items-end">
                 <svg class="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" style="overflow: visible;">
                   <defs>
@@ -127,18 +127,18 @@
 
         <!-- IP & ISP -->
         <div v-if="hasStarted" class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl mb-4 animate-fade-in">
-          <div class="bg-white/[0.02] border border-white/[0.05] rounded-xl p-4 shadow-inner shadow-black/20 flex flex-col justify-center backdrop-blur-sm">
-            <span class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">IP</span>
-            <span class="block text-sm md:text-base font-bold text-white">{{ clientIp || 'Mengambil data...' }}</span>
+          <div class="bg-black/[0.01] dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.05] rounded-xl p-4 shadow-inner flex flex-col justify-center backdrop-blur-sm">
+            <span class="block text-[9px] md:text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">IP</span>
+            <span class="block text-sm md:text-base font-bold text-gray-900 dark:text-white">{{ clientIp || 'Mengambil data...' }}</span>
           </div>
-          <div class="bg-white/[0.02] border border-white/[0.05] rounded-xl p-4 shadow-inner shadow-black/20 flex flex-col justify-center backdrop-blur-sm">
-            <span class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">ISP</span>
-            <span class="block text-sm md:text-base font-bold text-white">{{ clientIsp || 'Mengambil data...' }}</span>
+          <div class="bg-black/[0.01] dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.05] rounded-xl p-4 shadow-inner flex flex-col justify-center backdrop-blur-sm">
+            <span class="block text-[9px] md:text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">ISP</span>
+            <span class="block text-sm md:text-base font-bold text-gray-900 dark:text-white">{{ clientIsp || 'Mengambil data...' }}</span>
           </div>
         </div>
         
         <!-- Stop Button -->
-        <button v-if="isTesting || download !== null" @click="stopTest" class="mt-6 px-6 py-2 rounded-full border border-white/[0.1] bg-white/[0.05] text-gray-300 text-sm font-semibold hover:bg-white/[0.1] hover:text-white transition-colors shadow-lg backdrop-blur-md">
+        <button v-if="isTesting || download !== null" @click="stopTest" class="mt-6 px-6 py-2 rounded-full border border-black/10 dark:border-white/[0.1] bg-black/5 dark:bg-white/[0.05] text-gray-600 dark:text-gray-300 text-sm font-semibold hover:bg-black/10 dark:hover:bg-white/[0.1] hover:text-gray-900 dark:hover:text-white transition-colors shadow-lg backdrop-blur-md cursor-pointer">
           {{ isTesting ? 'Hentikan Tes' : 'Ulangi Tes' }}
         </button>
 

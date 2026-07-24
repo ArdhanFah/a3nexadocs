@@ -49,11 +49,11 @@ const tools = ref([
   <main class="max-w-5xl mx-auto px-6 pb-12 pt-28 md:pt-36 relative z-10">
     <!-- Header Section -->
     <div class="text-center mb-16 relative">
-      <div class="absolute inset-0 bg-primary-500/20 blur-[100px] rounded-full"></div>
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 tracking-tight drop-shadow-sm">
+      <div class="absolute inset-0 bg-primary-500/10 dark:bg-primary-500/20 blur-[100px] rounded-full"></div>
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-gray-200 dark:to-gray-500 tracking-tight drop-shadow-sm">
         Network Tools
       </h1>
-      <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+      <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
         Kumpulan utilitas jaringan praktis untuk membantu proses troubleshooting Anda.
       </p>
     </div>
@@ -64,7 +64,7 @@ const tools = ref([
         v-for="tool in tools"
         :key="tool.id"
         :to="tool.route"
-        class="group relative bg-[#13131a] rounded-3xl p-6 border border-white/5 hover:border-white/20 transition-all duration-300 overflow-hidden flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
+        class="group relative bg-white/60 dark:bg-[#13131a] rounded-3xl p-6 border border-black/[0.06] dark:border-white/5 hover:border-black/10 dark:hover:border-white/20 transition-all duration-300 overflow-hidden flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
       >
         <!-- Hover Glow Effect -->
         <div class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300" :class="tool.color"></div>
@@ -72,22 +72,22 @@ const tools = ref([
         <!-- Icon Container -->
         <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
           <div class="absolute inset-0 bg-gradient-to-br opacity-20" :class="tool.color"></div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="tool.icon" />
           </svg>
         </div>
 
-        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 transition-all">
           {{ tool.name }}
         </h3>
         
-        <p class="text-gray-400 text-sm leading-relaxed">
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
           {{ tool.description }}
         </p>
 
         <!-- Arrow indicator -->
-        <div class="mt-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-white transition-colors group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="mt-6 w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-primary-500/10 dark:group-hover:bg-white/10 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-white transition-colors group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </div>
