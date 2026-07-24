@@ -143,7 +143,7 @@ const handleLookup = async () => {
         <!-- Results Section -->
         <div class="w-full relative z-10">
           
-          <div v-slot:error v-if="error" class="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center text-red-500 dark:text-red-400">
+          <div v-if="error" class="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center text-red-500 dark:text-red-400 mb-6">
             <p>{{ error }}</p>
           </div>
 

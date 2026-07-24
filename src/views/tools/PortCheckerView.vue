@@ -36,8 +36,6 @@ const checkPort = async () => {
     cleanHost = cleanHost.replace(/^(https?:\/\/)?(www\.)?/, '')
 
     // Use a free public port checking API (e.g. portquiz.net or a similar API)
-    // For demonstration, we check using a reliable network utility tool via cloud fetch.
-    // If blocked, we simulate local resolution status safely.
     const response = await fetch(`https://api.portchecker.co/v1/query/${cleanHost}/${finalPort.value}`)
     if (!response.ok) throw new Error('Resolving status gagal. Silakan coba sesaat lagi.')
     const data = await response.json()
@@ -118,7 +116,7 @@ const checkPort = async () => {
               <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Pilih Port</label>
               <select 
                 v-model="selectedPortOption"
-                class="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 transition-all cursor-pointer appearance-none text-center"
+                class="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-amber-550 dark:focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 transition-all cursor-pointer appearance-none text-center"
               >
                 <option v-for="port in commonPorts" :key="port.value" :value="port.value">{{ port.label }}</option>
               </select>
@@ -135,7 +133,7 @@ const checkPort = async () => {
               max="65535"
               placeholder="Masukkan port (1 - 65535)"
               required
-              class="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              class="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-amber-550 dark:focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
             />
           </div>
 
@@ -168,7 +166,7 @@ const checkPort = async () => {
 
         <!-- Results Section -->
         <div class="relative z-10 w-full">
-          <div v-slot:error v-if="error" class="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center text-red-500 dark:text-red-400">
+          <div v-if="error" class="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center text-red-500 dark:text-red-400 mb-6">
             <p>{{ error }}</p>
           </div>
 
@@ -183,7 +181,7 @@ const checkPort = async () => {
                 </svg>
               </div>
 
-              <span class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest block mb-1">Hasil Analisis Port</span>
+              <span class="text-xs font-bold text-gray-400 dark:text-gray-550 uppercase tracking-widest block mb-1">Hasil Analisis Port</span>
               <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-2">
                 Port {{ result.port }} di {{ result.host }} adalah 
                 <span :class="result.status === 'open' ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'">

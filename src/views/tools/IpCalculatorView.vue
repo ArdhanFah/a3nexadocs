@@ -150,7 +150,7 @@ const results = computed(() => {
         </div>
 
         <!-- Results Grid -->
-        <div v-slot:results v-if="results" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto relative z-10 w-full">
+        <div v-if="results" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto relative z-10 w-full">
           
           <!-- Network Address -->
           <div class="bg-white/60 dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.05] shadow-sm dark:shadow-lg dark:shadow-black/20 rounded-2xl p-6 hover:bg-white/80 dark:hover:bg-white/[0.04] hover:border-purple-500/30 transition-all duration-300 group flex flex-col items-center text-center hover:-translate-y-1">
